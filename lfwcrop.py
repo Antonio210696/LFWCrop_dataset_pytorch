@@ -6,7 +6,7 @@ import os
 import string
 import os.path
 import sys
-
+import torch
 
 def pil_loader(image):
     # open path as file to avoid ResourceWarning (https://github.com/python-pillow/Pillow/issues/835)
@@ -195,6 +195,7 @@ class LFWCrop(VisionDataset):
         '''
 
         image, label = self.faces[index]
+        label = torch.FloatTensor(label)
         #    image = pil_loader(image)
 
         #    fileName, label = self.pairs[index]
