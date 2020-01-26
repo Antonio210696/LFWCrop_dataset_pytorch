@@ -15,9 +15,10 @@ def pil_loader(image):
 
 
 class LFWCrop(VisionDataset):
-    def __init__(self, root, split='train', transform=None, target_transform=None, full_load=True):
+    def __init__(self, root, transform=None):
         super(LFWCrop, self).__init__(
-            root, transform=transform, target_transform=target_transform)
+            root, transform=transform)
+
 
         '''
             This class has to retrieve the elements in LFWCrop dataset.
@@ -29,6 +30,7 @@ class LFWCrop(VisionDataset):
             We are not going to use all the attributes that we have in the list, but just a subset.
         '''
 
+        self.root = root
         self.transform = transform
         self.attributes_to_use = [
             "Male",
@@ -109,7 +111,7 @@ class LFWCrop(VisionDataset):
         print("Using %d attributes", len(self.attributes_to_use))
 
         # Retrieving cropped actors names
-        self.cropped_actors_files = os.listdir("faces")
+        self.cropped_actors_files = os.listdir(self.root + "faces")
         self.cropped_actors = []
         for actor in self.cropped_actors_files:
             actor = actor.rstrip('.ppm')
@@ -121,7 +123,7 @@ class LFWCrop(VisionDataset):
         self.faces_dict = {}
         self.faces = []
         self.facesDir = 'faces/'
-        att_file = open("lfw_attributes.txt", 'r')
+        att_file = open(self.root + "lfw_attributes.txt", 'r')
 
         for i, line in enumerate(att_file):
             if i == 1:
@@ -140,7 +142,7 @@ class LFWCrop(VisionDataset):
                     self.faces_dict[actor_code] = [line[index] for index in self.att_indeces]
 
                     # Creating the final list of tuples(<pil_image>, <attributes_list>) 
-                    image = open(self.facesDir + imageFile, 'rb')
+                    image = open(self.root + self.facesDir + imageFile, 'rb')
                     image = pil_loader(image)
                     self.faces.append((image, self.faces_dict[actor_code]))
 
