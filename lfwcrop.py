@@ -140,7 +140,7 @@ class LFWCrop(VisionDataset):
                 actor_code = line[0].replace(' ', '_') + '_' + format(int(line[1]), '04')
                 if actor_code in self.cropped_actors: 
                     imageFile = actor_code + '.ppm'
-                    self.faces_dict[actor_code] = [line[index] for index in self.att_indeces]
+                    self.faces_dict[actor_code] = [float(line[index]) for index in self.att_indeces]
 
                     # Creating the final list of tuples(<pil_image>, <attributes_list>) 
                     image = open(self.root + self.facesDir + imageFile, 'rb')
@@ -195,6 +195,8 @@ class LFWCrop(VisionDataset):
         '''
 
         image, label = self.faces[index]
+        print(label)
+        print(type(label))
         label = torch.FloatTensor(label)
         #    image = pil_loader(image)
 
