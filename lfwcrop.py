@@ -193,7 +193,6 @@ class LFWCrop(VisionDataset):
         Returns:
             tuple: (sample, target) where target is class_index of the target class.
         '''
-        print(index)
         image, label = self.faces[index]
         label = torch.FloatTensor(label)
         #    image = pil_loader(image)
