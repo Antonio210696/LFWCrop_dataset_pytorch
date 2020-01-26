@@ -195,8 +195,6 @@ class LFWCrop(VisionDataset):
         '''
 
         image, label = self.faces[index]
-        print(label)
-        print(type(label))
         label = torch.FloatTensor(label)
         #    image = pil_loader(image)
 
