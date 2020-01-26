@@ -111,6 +111,7 @@ class LFWCrop(VisionDataset):
         print("Using %d attributes", len(self.attributes_to_use))
 
         # Retrieving cropped actors names
+        print("Root directory is " + self.root)
         self.cropped_actors_files = os.listdir(self.root + "faces")
         self.cropped_actors = []
         for actor in self.cropped_actors_files:
