@@ -130,9 +130,8 @@ class LFWCrop(VisionDataset):
             if i == 1:
                 line = line.split('\t')
                 for att_name in line:
-                    print("Selected attributes: " + att_name)
                     if att_name in self.attributes_to_use:
-                        self.att_indeces.append(line.index(att_name))
+                        self.att_indeces.append(line.index(att_name)-1)
 
             # Preparing images list
             elif i > 1:
@@ -148,41 +147,6 @@ class LFWCrop(VisionDataset):
                     self.faces.append((image, self.faces_dict[actor_code]))
 
 
-
-
-        # Taking the split files
-
-        # First, we obtain the class_indeces for all classes
-
-#        if self.split == 'train':
-#            trainFile = open(root + "/train.txt", 'r')
-#            self.pairs = []
-#            # Discerning the label from the image file
-#            for file in trainFile:
-#                file = file.rstrip()
-#                label = file.split('/')[0]
-#                # if the file is the 'BACKGROUND_Google', we filter it out
-#                if label != "BACKGROUND_Google":
-#                    if full_load:
-#                        # we open the entire file and put it in memory
-#                        # It is suggested to do this only on the virtual environment of
-#                        # COLab
-#                        image = open(objCatDir + file, 'rb')
-#                    else:
-#                        image = objCatDir + file
-#                    self.pairs.append((image, class_indeces[label]))
-#                else:
-#                    print(label)
-
-
-        '''
-        - Here you should implement the logic for reading the splits files and accessing elements
-        - If the RAM size allows it, it is faster to store all data in memory
-        - PyTorch Dataset classes use indexes to read elements
-        - You should provide a way for the __getitem__ method to access the image-label pair
-          through the index
-        - Labels should start from 0, so for Caltech you will have lables 0...100 (excluding the background class) 
-        '''
 
     def __getitem__(self, index):
         '''
