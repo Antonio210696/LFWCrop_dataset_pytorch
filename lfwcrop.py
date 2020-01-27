@@ -34,8 +34,8 @@ class LFWCrop(VisionDataset):
         self.transform = transform
         self.attributes_to_use = [
             "Male",
-        #    "Asian",
-        #    "White",
+            "Asian",
+            "White",
         #    "Black",
         #    "Baby",
         #    "Child",
@@ -50,7 +50,7 @@ class LFWCrop(VisionDataset):
         #    "Eyeglasses",
         #    "Sunglasses",
         #    "Mustache",
-        #    "Smiling",
+            "Smiling",
         #    "Frowning",
         #    "Chubby",
         #    "Blurry",
@@ -76,7 +76,7 @@ class LFWCrop(VisionDataset):
         #    "Big Lips",
         #    "Mouth Closed",
         #    "Mouth Slightly Open",
-        #    "Mouth Wide Open",
+            "Mouth Wide Open"
         #    "Teeth Not Visible",
         #    "No Beard",
         #    "Goatee",
