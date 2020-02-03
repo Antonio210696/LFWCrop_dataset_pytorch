@@ -156,14 +156,14 @@ class LFWCrop(VisionDataset):
                     image = pil_loader(image)
                     self.faces.append((image, self.faces_dict[actor_code]))
 
-         if self.pca_components is not None:
+        if self.pca_components is not None:
             # se si vogliono standardizzare i dati 
             # self.faces_dict[actor_code] = StandardScaler().fit_transform(self.faces_dict[actor_code])
 
             pca = PCA(self.pca_components)
             # il tipo dict_value non piace a PCA
             normal_array = []
-            for value in self.faces_dict.value():
+            for value in self.faces_dict.values():
                 normal_array.append(value)
 
             principal_components = pca.fit_transform(normal_array)
