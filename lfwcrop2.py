@@ -141,8 +141,9 @@ class LFWCrop(VisionDataset):
                     if att_name in self.attributes_to_use:
                         self.att_indeces.append(line.index(att_name))
 
-            print("We have %d" % len(self.att_indeces))
+                print("We have %d" % len(self.att_indeces))
             # Preparing images list
+
             elif i > 1:
                 line = line.split('\t')
                 actor_code = line[0].replace(
