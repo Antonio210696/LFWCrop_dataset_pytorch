@@ -141,6 +141,7 @@ class LFWCrop(VisionDataset):
                     if att_name in self.attributes_to_use:
                         self.att_indeces.append(line.index(att_name))
 
+            print("We have %d" % len(self.att_indeces))
             # Preparing images list
             elif i > 1:
                 line = line.split('\t')
@@ -168,6 +169,7 @@ class LFWCrop(VisionDataset):
                 normal_array.append(value)
 
             principal_components = pca.fit_transform(normal_array)
+            print(pca.components_.shape)
             print(pd.DataFrame(pca.components_, columns=self.attributes_to_use, index=['PC-1', 'PC-2', 'PC-3', 'PC-4','PC-5', 'PC-6','PC-7', 'PC-8','PC-9', 'PC-10', 'PC-11']))
             i = 0
             # Reinseriamo i nuovi valori 

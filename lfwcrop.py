@@ -163,7 +163,7 @@ class LFWCrop(VisionDataset):
             pca = PCA(self.pca_components)
             # il tipo dict_value non piace a PCA
             normal_array = []
-            for value in self.faces_dict.value  s():
+            for value in self.faces_dict.values():
                 normal_array.append(value)
 
             principal_components = pca.fit_transform(normal_array)
