@@ -174,6 +174,7 @@ class LFWCrop(VisionDataset):
 
             principal_components = pca.fit_transform(normal_array)
             print(pca.components_.shape)
+            pd.set_option('display.max_columns', 74)
             print(pd.DataFrame(pca.components_, columns=self.attributes_to_use, index=['PC-1', 'PC-2', 'PC-3', 'PC-4','PC-5', 'PC-6','PC-7', 'PC-8','PC-9', 'PC-10', 'PC-11']))
             i = 0
             # Reinseriamo i nuovi valori 
