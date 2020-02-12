@@ -3,6 +3,7 @@ from torchvision.datasets import VisionDataset
 from PIL import Image
 
 import os
+import pandas as pd
 import string
 import os.path
 import sys
@@ -163,10 +164,11 @@ class LFWCrop(VisionDataset):
             pca = PCA(self.pca_components)
             # il tipo dict_value non piace a PCA
             normal_array = []
-            for value in self.faces_dict.value  s():
+            for value in self.faces_dict.values():
                 normal_array.append(value)
 
             principal_components = pca.fit_transform(normal_array)
+            print(pd.DataFrame(pca.components_, columns=self.attributes_to_use, index=['PC-1', 'PC-2', 'PC-3', 'PC-4','PC-5', 'PC-6','PC-7', 'PC-8','PC-9', 'PC-10', 'PC-11']))
             i = 0
             # Reinseriamo i nuovi valori 
             for i, tupla in enumerate(self.faces):
