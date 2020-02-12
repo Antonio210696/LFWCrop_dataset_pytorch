@@ -136,7 +136,7 @@ class LFWCrop(VisionDataset):
 
         for i, line in enumerate(att_file):
             if i == 1:
-                line = line.split('\t')
+                line = line.strip('\n').split('\t')
                 for att_name in line:
                     if att_name in self.attributes_to_use:
                         print(att_name + "is in attributes to use")
