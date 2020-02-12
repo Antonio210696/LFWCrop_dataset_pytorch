@@ -138,6 +138,7 @@ class LFWCrop(VisionDataset):
             if i == 1:
                 line = line.split('\t')
                 for att_name in line:
+                    print(att_name)
                     if att_name in self.attributes_to_use:
                         self.att_indeces.append(line.index(att_name))
 
